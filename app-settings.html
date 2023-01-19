@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>WBF Admin - Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="Workout Baddy Finder Admin & Dashboard" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .leftbar-tab-menu .main-menu-inner .topbar-left .logo .logo-lg{
+            height: 60px !important;
+        }
+        .appSettingsArea .active {
+            background-color: #023E8A;
+            border-radius: 0.25rem;
+
+        }
+        .appSettingsArea .active h3{
+            color: white;
+        }
+        .card{
+            border-radius: 0.25rem !important;
+        }
+    </style>
+</head>
+
+<body id="body" class="">
+    <!-- leftbar-tab-menu -->
+    <div class="leftbar-tab-menu">
+        <div class="main-icon-menu">
+            <a href="index.html" class="logo logo-metrica d-block text-center" title="Workout Buddy Finder">
+                <span>
+                    <img src="assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
+                </span>
+            </a>
+            <div class="main-icon-menu-body">
+                <div class="position-reletive h-100" data-simplebar style="overflow-x: hidden;">
+                    <ul class="nav nav-tabs" role="tablist" id="tab-menu">
+                        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard"
+                            data-bs-trigger="hover">
+                            <a href="#WbfDashboard" id="dashboard-tab" class="nav-link">
+                                <i class="ti ti-smart-home menu-icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pro-metrica-end">
+                <a href="" class="profile">
+                    <img src="assets/images/users/Admin-0.jpg" alt="profile-user" class="rounded-circle thumb-sm">
+                </a>
+            </div>
+        </div>
+        <!--end main-icon-menu-->
+
+        <div class="main-menu-inner">
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="index.html" class="logo">
+                    <span>
+                        <img src="assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark">
+                        <img src="assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
+                    </span>
+                </a><!--end logo-->
+            </div><!--end topbar-left-->
+            <!--end logo-->
+            <div class="menu-body navbar-vertical tab-content" data-simplebar>
+                <div id="WbfDashboard" class="main-icon-menu-pane tab-pane" role="tabpanel"
+                    aria-labelledby="dasboard-tab">
+                    <div class="title-box">
+                        <h6 class="menu-title">Admin Menu</h6>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Settings.html">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end leftbar-tab-menu-->
+    <!-- Top-tab-menu-->
+    <div class="topbar">
+        <nav class="navbar-custom" id="navbar-custom">
+            <ul class="list-unstyled topbar-nav float-end mb-0">
+                <li class="dropdown">
+                    <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="assets/images/flags/Flag_of_Bangladesh.png" alt="" class="thumb-xxs rounded-circle">
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"><img src="assets/images/flags/Flag_of_Bangladesh.png" alt=""
+                                height="15" class="me-2">Bangla</a>
+                        <a class="dropdown-item" href="#"><img src="assets/images/flags/us_flag.jpg" alt="" height="15"
+                                class="me-2">English</a>
+                        <a class="dropdown-item" href="#"><img src="assets/images/flags/spain_flag.jpg" alt=""
+                                height="15" class="me-2">Spanish</a>
+                        <a class="dropdown-item" href="#"><img src="assets/images/flags/germany_flag.jpg" alt=""
+                                height="15" class="me-2">German</a>
+                        <a class="dropdown-item" href="#"><img src="assets/images/flags/french_flag.jpg" alt=""
+                                height="15" class="me-2">French</a>
+                    </div>
+                </li>               
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="ti ti-bell"></i>
+                        <span class="alert-badge"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
+                        <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
+                            Notifications <span class="badge bg-soft-primary badge-pill">2</span>
+                        </h6>
+                        <div class="notification-menu" data-simplebar>
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">2 min ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-chart-arcs"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">New Settings</h6>
+                                        <small class="text-muted mb-0">Location industry.</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">10 min ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-device-computer-camera"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Meeting with designers</h6>
+                                        <small class="text-muted mb-0">It is a long established fact that a reader.</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">40 min ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-diamond"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">UX 3 Task complete.</h6>
+                                        <small class="text-muted mb-0">Done.</small>
+                                    </div>  
+                                </div>  
+                            </a>
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">1 hr ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-drone"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Todays Visitor</h6>
+                                        <small class="text-muted mb-0">.</small>
+                                    </div>  
+                                </div>  
+                            </a>                              
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">2 hrs ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-users"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Payment Successfull</h6>
+                                        <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                    </div>  
+                                </div>  
+                            </a> 
+                        </div>                          
+                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary">View all<i class="fi-arrow-right"></i></a>
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <img src="assets/images/users/Admin-0.jpg" alt="profile-user"
+                                class="rounded-circle me-2 thumb-sm" />
+                            <div>
+                                <small class="d-none d-md-block font-11">Admin</small>
+                                <span class="d-none d-md-block fw-semibold font-12">Ahasanul Kabir <i class="mdi mdi-chevron-down"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="#"><i class="ti ti-user font-16 me-1 align-text-bottom"></i>Profile</a>
+                        <a class="dropdown-item" href="#"><i class="ti ti-settings font-16 me-1 align-text-bottom"></i>Settings</a>
+                        <div class="dropdown-divider mb-0"></div>
+                        <a class="dropdown-item" href="#" id="logout"><i class="ti ti-power font-16 me-1 align-text-bottom"></i>Logout</a>
+                    </div>
+                </li>
+                <li class="notification-list">
+                    <a class="nav-link arrow-none nav-icon offcanvas-btn" href="#" data-bs-toggle="offcanvas" data-bs-target="#Appearance" role="button" aria-controls="Rightbar">
+                        <i class="ti ti-settings ti-spin"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled topbar-nav mb-0">
+                <li>
+                    <button class="nav-link button-menu-mobile nav-icon" id="togglemenu">
+                        <i class="ti ti-menu-2"></i>
+                    </button>
+                </li>
+                <li class="hide-phone app-search">
+                    <form role="search" action="#" method="get">
+                        <input type="search" name="search" class="form-control top-search mb-0"
+                            placeholder="Type text...">
+                        <button type="submit"><i class="ti ti-search"></i></button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="page-content-tab">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <div class="float-end">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>   
+                                    <li class="breadcrumb-item active">Settings</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Application Settings</h4>
+                        </div>
+                    </div>    
+                </div>
+                <div class="row appSettingsArea">
+                    <div class="col-lg-12">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-lg-3 ">
+                                <a href="#">
+                                    <div class="card" id="interast">
+                                        <div class="card-body clickAbleItem active">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col-9">                                                    
+                                                    <h3 class="my-1 font-20 fw-bold">Interast Settings</h3>                                                    
+                                                </div>
+                                                <div class="col-3 align-self-center">
+                                                    <div class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                        <i class="ti ti-affiliate font-24 align-self-center text-muted"></i>                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>                                
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <a href="#" >
+                                    <div class="card" id="profile">                                    
+                                        <div class="card-body clickAbleItem">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col-9">
+                                                    <p class="text-dark mb-0 fw-semibold"></p>
+                                                    <h3 class="my-1 font-20 fw-bold">Profile Settings</h3>
+                                                    
+                                                </div>
+                                                <div class="col-3 align-self-center">
+                                                    <div
+                                                        class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                        <i class="fas fa-user-cog font-24 align-self-center text-muted"></i>                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>                                
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <a href="#" id="message">
+                                    <div class="card rounded">
+                                        <div class="card-body clickAbleItem">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col-9">
+                                                    <p class="text-dark mb-0 fw-semibold"></p>
+                                                    <h3 class="my-1 font-20 fw-bold">Message Settings</h3>
+                                                    
+                                                </div>
+                                                <div class="col-3 align-self-center">
+                                                    <div
+                                                        class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                        <i class="mdi mdi-message-settings-variant font-24 align-self-center text-muted"></i>                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>                                
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <a href="#" id="appSettings">
+                                    <div class="card">
+                                        <div class="card-body clickAbleItem">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col-9">
+                                                    <p class="text-dark mb-0 fw-semibold"></p>
+                                                    <h3 class="my-1 font-20 fw-bold">App Settings</h3>                                                
+                                                </div>
+                                                <div class="col-3 align-self-center">
+                                                    <div
+                                                        class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                        <i class="ti ti-settings font-24 align-self-center text-muted"></i>                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>                                
+                            </div>
+                        </div>                        
+                    </div>                    
+                </div>    
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4 id="cardHeaderTitle">Interast Settings</h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="d-flex justify-content-end ">
+                                                   <a class="btn btn-success" data-bs-toggle="modal" id="addNew" data-bs-target="#modalCrate">Add</a> 
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="card-body ">
+                                        <table class="table table-hover table-bordered" id="tblSettings">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sl</th>
+                                                    <th>Name</th>
+                                                    <th>Created Date</th>
+                                                    <th class="d-flex justify-content-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>                              
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4 id="cardHeaderTitle">Interast Analysis</h4>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="card-body ">
+                                        <div id="chartArea">
+                                            
+                                        </div>
+                                    </div>
+                                </div>                              
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="Appearance" aria-labelledby="AppearanceLabel">
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="m-0 font-14" id="AppearanceLabel">Appearance</h5>
+                    <button type="button" class="btn-close text-reset p-0 m-0 align-self-center" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <h6>Account Settings</h6>
+                    <div class="p-2 text-start mt-3">
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="settings-switch1">
+                            <label class="form-check-label" for="settings-switch1">Auto updates</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="settings-switch2" checked>
+                            <label class="form-check-label" for="settings-switch2">Location Permission</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="settings-switch3">
+                            <label class="form-check-label" for="settings-switch3">Show offline Contacts</label>
+                        </div>
+                    </div>
+                    <h6>General Settings</h6>
+                    <div class="p-2 text-start mt-3">
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="settings-switch4">
+                            <label class="form-check-label" for="settings-switch4">Show me Online</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="settings-switch5" checked>
+                            <label class="form-check-label" for="settings-switch5">Status visible to all</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="settings-switch6">
+                            <label class="form-check-label" for="settings-switch6">Notifications Popup</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer text-center text-sm-start">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> WORKOUT BUDDY FINDER <span class="text-muted d-none d-sm-inline-block float-end">
+                    Crafted with <i class="mdi mdi-heart text-danger"></i> by Team Orange</span>
+            </footer>
+        </div>
+    </div>
+    <!--Modal-->
+    <div class="modal fade" id="modalCrate" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title m-0" id="modalTitle"></h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <form id="frm">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="hidden" id="id" />
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success btn-sm" id="btnSave">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript  -->
+    <script src="assets/js/jquery/dist/jquery.js"></script>
+    <script src="assets/js/config.js" type="module"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
