@@ -86,9 +86,9 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
             window.location.href = window.location.origin + '/wbfadmin/index.html'
         }).catch((e) => {
             if(e.code == 'auth/wrong-password')
-                document.getElementById('errorMassage').innerHTML = 'Wrong Password';
+                document.getElementById('errorMassage').innerText = 'Wrong Password';
             else if(e.code == 'auth/wrong-password')
-                document.getElementById('errorMassage').innerHTML = 'Wrong Password';
+                document.getElementById('errorMassage').innerText = 'Wrong Password';
         });
     });
 } else if(window.location.pathname == '/wbfadmin/' || window.location.pathname.replace('#','').trim() == '/wbfadmin/index.html') {
