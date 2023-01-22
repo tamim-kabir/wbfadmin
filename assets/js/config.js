@@ -19,7 +19,7 @@ var auth = getAuth(app);
 var db = getDatabase(app);
 var currentUser = [];
 //register
-if(window.location.pathname == '/WbfAdmin/auth-register.html'){///WbfAdmin
+if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
     var passValidate = false;
     document.getElementById('userPassword').addEventListener('keyup', (e) => {
         e.preventDefault();
@@ -68,14 +68,14 @@ if(window.location.pathname == '/WbfAdmin/auth-register.html'){///WbfAdmin
                 };
                 set(ref(db, 'users/' + userCredential.user.uid), userData)
                 .then(() => {                
-                    window.location.href = window.location.origin + '/WbfAdmin/auth-login.html';
+                    window.location.href = window.location.origin + '/wbfadmin/auth-login.html';
                 });
             }).catch((e) => {
                 alert(e.code, e.message);
             });
         }
     });
-} else if(window.location.pathname == '/WbfAdmin/auth-login.html') {
+} else if(window.location.pathname == '/wbfadmin/auth-login.html') {
     //Login
     document.getElementById('login').addEventListener('click', () => {
         let email = document.getElementById('userEmail').value;
@@ -83,7 +83,7 @@ if(window.location.pathname == '/WbfAdmin/auth-register.html'){///WbfAdmin
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {  
             currentUser =  userCredential.currentUser;        
-            window.location.href = window.location.origin + '/WbfAdmin/index.html'
+            window.location.href = window.location.origin + '/wbfadmin/index.html'
         }).catch((e) => {
             if(e.code == 'auth/wrong-password')
                 document.getElementById('errorMassage').innerHTML = 'Wrong Password';
@@ -91,10 +91,10 @@ if(window.location.pathname == '/WbfAdmin/auth-register.html'){///WbfAdmin
                 document.getElementById('errorMassage').innerHTML = 'Wrong Password';
         });
     });
-} else if(window.location.pathname == '/WbfAdmin/' || window.location.pathname.replace('#','').trim() == '/WbfAdmin/index.html') {
+} else if(window.location.pathname == '/wbfadmin/' || window.location.pathname.replace('#','').trim() == '/wbfadmin/index.html') {
     onAuthStateChanged(auth, (user) => {
         if (!user) { 
-            window.location.href = window.location.origin + '/WbfAdmin/auth-login.html';
+            window.location.href = window.location.origin + '/wbfadmin/auth-login.html';
         }
         else
             currentUser = user;
@@ -102,13 +102,13 @@ if(window.location.pathname == '/WbfAdmin/auth-register.html'){///WbfAdmin
     document.getElementById('logout').addEventListener('click', () => {            
         signOut(auth)
         .then(() => {
-            window.location.href = window.location.origin + '/WbfAdmin/auth-login.html'
+            window.location.href = window.location.origin + '/wbfadmin/auth-login.html'
         });
     });
-}else if(window.location.pathname.replace('#','').trim() == '/WbfAdmin/app-settings.html') {
+}else if(window.location.pathname.replace('#','').trim() == '/wbfadmin/app-settings.html') {
     onAuthStateChanged(auth, (user) => {
         if (!user) { 
-            window.location.href = window.location.origin + '/WbfAdmin/auth-login.html';
+            window.location.href = window.location.origin + '/wbfadmin/auth-login.html';
         }
         else
             currentUser = user;
@@ -116,7 +116,7 @@ if(window.location.pathname == '/WbfAdmin/auth-register.html'){///WbfAdmin
     document.getElementById('logout').addEventListener('click', () => {            
         signOut(auth)
         .then(() => {
-            window.location.href = window.location.origin + '/WbfAdmin/auth-login.html'
+            window.location.href = window.location.origin + '/wbfadmin/auth-login.html'
         });     
         
     });
