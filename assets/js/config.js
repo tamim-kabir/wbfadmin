@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged,  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getDatabase, ref, set, child, get, onValue, push, update, query, orderByChild } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-//import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+import { getStorage, ref as stRef, uploadBytes, getDownloadURL  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDdIrcAhBYZ2rPP_bmx3ZGnONQ-6o8BbxM",
@@ -17,7 +17,7 @@ const firebaseConfig = {
 var app = initializeApp(firebaseConfig);
 var auth = getAuth(app);
 var db = getDatabase(app);
-var currentUser = [];
+var currentUser = auth.currentUser;
 //register
 if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
     var passValidate = false;
@@ -144,6 +144,7 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
             }            
         });
     }
+    $('.dropify').dropify();
 })();
 function interastSettings() {
     $('#modalTitle').text('Create interast');    
@@ -168,22 +169,42 @@ $('#btnSave').click(() => {
 });
 function createInterst() {
     let name = $('#modalCrate #name').val(); 
-    let currentUid = currentUser.uid;  
-    let interst = {
-        name: name,
-        createdBy: currentUid,
-        createdDate: new Date(), 
-    }
-    const newPostKey = push(child(ref(db), 'posts')).key;
+    var icon = $("#photoUrl").prop("files")[0];
+    const storage = getStorage(app);
+    const storageRef = stRef(storage, 'icon/' + icon.name);
 
-    const updates = {};
-    updates['/interst/' + newPostKey] = interst;
-
-    update(ref(db), updates)
-        .then(() => {
-            $('#modalCrate').modal('hide');
-            loadInterast();
+    uploadBytes(storageRef, icon.name)
+    .then((snapshot) => {        
+        getDownloadURL(snapshot.ref)
+        .then((url) => {
+            let currentUid = currentUser.uid;  
+            let interst = {
+                name: name,
+                iconName: icon.name,
+                iconUri: url,
+                createdBy: currentUid,
+                createdDate: new Date(),
+            }
+            let newPostKey = push(child(ref(db), 'posts')).key;
+            let updates = [];
+            updates['/interst/' + newPostKey] = interst;
+            update(ref(db), updates)
+            .then(() => {
+                $('#modalCrate').modal('hide');
+                loadInterast();
+            })
+            .catch((e) => { 
+                console.log(e);
+            });
+        })
+        .catch((e) => { 
+            console.log(e);
         });
+    })
+    .catch((e) => { 
+        console.log(e);
+    });
+    
     return;
 }
 function loadInterast() {
@@ -198,6 +219,7 @@ function loadInterast() {
                                 <td>${++sl}</td>
                                 <td>${snapshot.val().name}</td>
                                 <td>${format}</td>
+                                <td><img src="${snapshot.iconUri}" alt="${snapshot.iconName}" width="10" height="10"></td>
                                 <td class="d-flex justify-content-center">
                                     <a href="javascript:void(0)" data-id="${snapshot.key}" class="remove"><i class="las la-trash text-danger font-16"></i></a>
                                     <a href="javascript:void(0)" data-id="${snapshot.key}" class="pl-2 edit"><i class="las la-pen text-secondary font-16"></i></a>                                                            

@@ -14,6 +14,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/js/dropify/css/dropify.min.css" rel="stylesheet" />
     <style>
         .leftbar-tab-menu .main-menu-inner .topbar-left .logo .logo-lg{
             height: 60px !important;
@@ -358,6 +359,7 @@
                                                     <th>Sl</th>
                                                     <th>Name</th>
                                                     <th>Created Date</th>
+                                                    <th>Icon</th>
                                                     <th class="d-flex justify-content-center">Action</th>
                                                 </tr>
                                             </thead>
@@ -440,7 +442,7 @@
     </div>
     <!--Modal-->
     <div class="modal fade" id="modalCrate" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h6 class="modal-title m-0" id="modalTitle"></h6>
@@ -457,7 +459,22 @@
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
                                     </div>
                                 </div>
+                                <div class="col-md-12">                                    
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12" id="dropy">
+                                    <div class="form-group">
+                                        <label for="photoUrl">Upload Icon</label>
+                                        <input asp-for="photoUrl" id="photoUrl" class="dropify" type="file" data-show-errors="true" data-errors-position="outside" data-allowed-file-extensions="jpg jpeg bmp png" placeholder=".jpg .jpeg .bmp .png" data-height="100"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="dropyImg" style="display:none;">
+                                    <div class="form-group">
+                                        <img id="imgSrc" class="frmImg" style="height: 200px; margin: auto; top: 10%; position: absolute;" />
+                                    </div>
+                                </div>
+                            </div>                           
                         </form>
                     </div>
                 </div>
@@ -470,6 +487,7 @@
     </div>
     <!-- Javascript  -->
     <script src="assets/js/jquery/dist/jquery.js"></script>
+    <script src="assets/js/dropify/js/dropify.min.js"></script>
     <script src="assets/js/config.js" type="module"></script>
     <script src="assets/js/app.js"></script>
 </body>
