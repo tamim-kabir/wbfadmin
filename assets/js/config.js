@@ -110,8 +110,9 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
         if (!user) { 
             window.location.href = window.location.origin + '/wbfadmin/auth-login.html';
         }
-        else
+        else{
             currentUser = user;
+        }
     });
     document.getElementById('logout').addEventListener('click', () => {            
         signOut(auth)
@@ -120,6 +121,8 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
         });     
         
     });
+    interastSettings();
+    $('.dropify').dropify();
 }
 //Settings
 (function() {
@@ -144,7 +147,6 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
             }            
         });
     }
-    $('.dropify').dropify();
 })();
 function interastSettings() {
     $('#modalTitle').text('Create interast');    
@@ -235,5 +237,5 @@ function loadInterast() {
     return;
 }
 $(document).ready(() => {
-    interastSettings();
+    
 })
