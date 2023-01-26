@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged,  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
-import { getDatabase, ref, set, child, get, onValue, push, update, query, orderByChild } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, ref as dbRef, set, child, get, onValue, push, update, query, orderByChild } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import { getStorage, ref as stRef, uploadBytes, getDownloadURL  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 
 const firebaseConfig = {
@@ -66,7 +66,7 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
                     phone: phone,
                     userRole: ''           
                 };
-                set(ref(db, 'users/' + userCredential.user.uid), userData)
+                set(dbRef(db, 'users/' + userCredential.user.uid), userData)
                 .then(() => {                
                     window.location.href = window.location.origin + '/wbfadmin/auth-login.html';
                 });
@@ -190,10 +190,10 @@ function createInterst() {
                 createdBy: currentUid,
                 createdDate: Date(),
             }
-            let newPostKey = push(child(ref(db), 'posts')).key;
+            let newPostKey = push(child(dbRef(db), 'posts')).key;
             let updates = [];
             updates['interst/' + newPostKey] = interst;
-            update(ref(db), updates)
+            update(dbRef(db), updates)
             .then(() => {
                 $('#modalCrate').modal('hide');
                 loadInterast();
@@ -215,8 +215,7 @@ function createInterst() {
 function loadInterast() {
     $('#tblSettings tbody').empty();
     let content = ``, sl = 0;
-    let dbRef = ref(db, 'interst');
-    onValue(dbRef, (snapshot) => {
+    onValue(dbRef(db, 'interst'), (snapshot) => {
         snapshot.forEach((snapshot) => {
             let newDate = new Date(snapshot.val().createdDate);
             let format = newDate.getDate() + "/" + newDate.getMonth() + 1 + "/" + newDate.getFullYear() + ' ' + newDate.getHours() + ':' + newDate.getMinutes();
