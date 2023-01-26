@@ -182,17 +182,17 @@ function createInterst() {
     .then((snapshot) => {        
         getDownloadURL(snapshot.ref)
         .then((url) => {
-            let currentUid = currentUser.uid;  
             let interst = {
                 name: name,
                 iconName: icon.name,
                 iconUri: url,
-                createdBy: currentUid,
+                createdBy: currentUser.uid,
                 createdDate: Date(),
             }
-            let newPostKey = push(child(dbRef(db), 'posts')).key;
+            let newPostKey = push(child(dbRef(db), 'interst')).key;
             let updates = [];
-            updates['interst/' + newPostKey] = interst;
+            updates['/interst/' + newPostKey] = interst;
+            updates['/user-posts/' + uid + '/' + newPostKey] = interst;
             update(dbRef(db), updates)
             .then(() => {
                 $('#modalCrate').modal('hide');
