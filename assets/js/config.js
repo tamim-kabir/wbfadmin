@@ -125,6 +125,7 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
     $('.dropify').dropify();
 }
 //Settings
+var icon;
 (function() {
     let classes = document.getElementsByClassName('clickAbleItem');
     for(let i = 0; i < classes.length; i++){
@@ -147,6 +148,7 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
             }            
         });
     }
+    
 })();
 function interastSettings() {
     $('#modalTitle').text('Create interast');    
@@ -171,7 +173,8 @@ $('#btnSave').click(() => {
 });
 function createInterst() {
     let name = $('#modalCrate #name').val(); 
-    var icon = $("#photoUrl").prop("files")[0];
+    var icon = $("#photoUrl")[0].files[0];
+    console.log(icon);
     const storage = getStorage(app);
     const storageRef = stRef(storage, 'icon/' + icon.name);
 
@@ -189,7 +192,7 @@ function createInterst() {
             }
             let newPostKey = push(child(ref(db), 'posts')).key;
             let updates = [];
-            updates['/interst/' + newPostKey] = interst;
+            updates['interst/' + newPostKey] = interst;
             update(ref(db), updates)
             .then(() => {
                 $('#modalCrate').modal('hide');
@@ -237,5 +240,5 @@ function loadInterast() {
     return;
 }
 $(document).ready(() => {
-    
+    //interastSettings()
 })
