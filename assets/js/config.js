@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged,  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getDatabase, ref, set, child, get, onValue, push, update, query, orderByChild } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-import { getStorage,  uploadBytes, getDownloadURL  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
-//ref as stRef,
+import { getStorage, ref as stRef, uploadBytes, getDownloadURL  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDdIrcAhBYZ2rPP_bmx3ZGnONQ-6o8BbxM",
     authDomain: "admin-31619.firebaseapp.com",
@@ -176,9 +176,9 @@ function createInterst() {
     var icon = $("#photoUrl")[0].files[0];
     console.log(icon);
     const storage = getStorage(app);
-    const storageRef = ref(storage, 'icon/' + icon.name);
+    const storageRef = stRef(storage, 'icon/' + icon.name);
 
-    uploadBytes(storageRef, icon.name)
+    uploadBytes(storageRef, icon)
     .then((snapshot) => {        
         getDownloadURL(snapshot.ref)
         .then((url) => {
