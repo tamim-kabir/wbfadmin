@@ -192,7 +192,7 @@ function createInterst() {
             let newPostKey = push(child(dbRef(db), 'interst')).key;
             let updates = [];
             updates['/interst/' + newPostKey] = interst;
-            updates['/user-posts/' + uid + '/' + newPostKey] = interst;
+            updates['/user-interst/' + uid + '/' + newPostKey] = interst;
             update(dbRef(db), updates)
             .then(() => {
                 $('#modalCrate').modal('hide');
