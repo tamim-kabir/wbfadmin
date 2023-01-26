@@ -188,7 +188,7 @@ function createInterst() {
                 iconName: icon.name,
                 iconUri: url,
                 createdBy: currentUid,
-                createdDate: new Date(),
+                createdDate: Date(),
             }
             let newPostKey = push(child(ref(db), 'posts')).key;
             let updates = [];
