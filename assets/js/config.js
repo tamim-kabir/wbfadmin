@@ -185,7 +185,7 @@ function createInterst() {
             let interst = {
                 name: name,
                 iconName: icon.name,
-                iconUri: url,
+                //iconUri: url,
                 createdBy: currentUser.uid,
                 createdDate: Date(),
             }
