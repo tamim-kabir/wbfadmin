@@ -185,7 +185,7 @@ function createInterst() {
             let interst = {
                 name: name,
                 iconName: icon.name,
-                //iconUri: url,
+                iconUri: url,
                 createdBy: currentUser.uid,
                 createdDate: Date(),
             }
@@ -222,7 +222,7 @@ function loadInterast() {
                                 <td>${++sl}</td>
                                 <td>${snapshot.val().name}</td>
                                 <td>${format}</td>
-                                <td><img src="${snapshot.iconUri}" alt="${snapshot.iconName}" width="10" height="10"></td>
+                                <td><img src="${snapshot.val().iconUri}" alt="${snapshot.val().iconName}" width="10" height="10"></td>
                                 <td class="d-flex justify-content-center">
                                     <a href="javascript:void(0)" data-id="${snapshot.key}" class="remove"><i class="las la-trash text-danger font-16"></i></a>
                                     <a href="javascript:void(0)" data-id="${snapshot.key}" class="pl-2 edit"><i class="las la-pen text-secondary font-16"></i></a>                                                            
