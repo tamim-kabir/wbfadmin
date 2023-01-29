@@ -190,7 +190,7 @@ function createInterst() {
                 createdDate: Date(),
             }
             let newPostKey = push(child(dbRef(db), 'interst')).key;
-            let updates = [];
+            let updates = {};
             updates['/interst/' + newPostKey] = interst;
             update(dbRef(db), updates)
             .then(() => {
