@@ -238,5 +238,5 @@ function loadInterast() {
     return;
 }
 $(document).ready(() => {
-    interastSettings()
+    //interastSettings()
 })
