@@ -124,7 +124,6 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
     interastSettings();
 }
 //Settings
-var icon;
 (function() {
     let classes = document.getElementsByClassName('clickAbleItem');
     for(let i = 0; i < classes.length; i++){
@@ -136,7 +135,7 @@ var icon;
                     interastSettings();
                     break;
                 case 1:
-                    
+                    appSettings();
                     break;
                 case 2:
                     
@@ -157,8 +156,8 @@ $('#btnSave').click(() => {
         case 'Create interast':
             createInterst();
             break;
-        case 1:
-
+        case 'Create App Settings':
+            createAppSettings()
             break;
         case 2:
 
@@ -170,89 +169,97 @@ $('#btnSave').click(() => {
 });
 //#region interst begain
 function interastSettings() {
-    $('#modalTitle').text('Create interast');  
+    $('#settingsBody').empty();    
     $('#settingsBody').append(
         `<div class="row">
-        <div class="col-md-6">
-            <div class="card" id="settingsttArea">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4 id="cardHeaderTitleSettings">Interast Settings</h4>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex justify-content-end ">
-                               <a class="btn btn-success" data-bs-toggle="modal" id="addNew" data-bs-target="#modalCrate">Add</a> 
-                            </div>                                                
-                        </div>
+            <div class="col-md-6">
+                <div class="card" id="settingsttArea">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 id="cardHeaderTitleSettings">Interast Settings</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-end ">
+                                <a class="btn btn-success" data-bs-toggle="modal" id="addNew" data-bs-target="#modalCrate">Add</a> 
+                                </div>                                                
+                            </div>
+                        </div>                        
                     </div>
-                    
-                </div>
-                <div class="card-body ">
-                    <table class="table table-hover table-bordered" id="tblSettings">
-                        <thead>
-                            <tr>
-                                <th>Sl</th>
-                                <th>Name</th>
-                                <th>Created Date</th>
-                                <th class="text-center">Icon</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>                              
-        </div>
-        <div class="col-md-6">
-            <div class="card" id="Analysis">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4 id="cardHeaderTitleAnalysis">Interast Analysis</h4>
-                        </div>
-                        <div class="col-md-6">
+                    <div class="card-body ">
+                        <table class="table table-hover table-bordered" id="tblSettings">
+                            <thead>
+                                <tr>
+                                    <th>Sl</th>
+                                    <th>Name</th>
+                                    <th>Created Date</th>
+                                    <th class="text-center">Icon</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>                              
+            </div>
+            <div class="col-md-6">
+                <div class="card" id="Analysis">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 id="cardHeaderTitleAnalysis">Interast Analysis</h4>
+                            </div>
+                            <div class="col-md-6">
 
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="card-body ">
+                        <div id="chartArea">
                         </div>
                     </div>
-                    
-                </div>
-                <div class="card-body ">
-                    <div id="chartArea">
-                    </div>
-                </div>
-            </div>                              
-        </div>
-    </div>`
+                </div>                              
+            </div>
+        </div>`
     );
+    $('#frm').empty();
     $('#frm').append(
         `<div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <input type="hidden" id="id" />
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="hidden" id="id" />
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+                </div>
+            </div>
+            <div class="col-md-12">                                    
             </div>
         </div>
-        <div class="col-md-12">                                    
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12" id="dropy">
-            <div class="form-group">
-                <label for="photoUrl">Upload Icon</label>
-                <input asp-for="photoUrl" id="photoUrl" class="dropify" type="file" data-show-errors="true" data-errors-position="outside" data-allowed-file-extensions="jpg jpeg bmp png" placeholder=".jpg .jpeg .bmp .png" data-height="100"/>
-            </div>
-        </div>                                
-    </div> `
+        <div class="row">
+            <div class="col-md-12" id="dropy">
+                <div class="form-group">
+                    <label for="photoUrl">Upload Icon</label>
+                    <input asp-for="photoUrl" id="photoUrl" class="dropify" type="file" data-show-errors="true" data-errors-position="outside" data-allowed-file-extensions="jpg jpeg bmp png icon" placeholder=".jpg .jpeg .bmp .png" data-height="100"/>
+                </div>
+            </div>                                
+        </div> 
+        <p style="display: none; color: red; text-align:center; margin-top:5px;" id="errorText"> Both fils is required</p>`
     );
+    $('#modalTitle').text('Create interast');  
     $('.dropify').dropify();
     loadInterast();
 }
 function createInterst() {
     let name = $('#modalCrate #name').val(); 
     var icon = $("#photoUrl")[0].files[0];
-    console.log(icon);
+    if(name == '' || icon == undefined)
+    {
+        $('#errorText').show();
+        setInterval(() => {
+            $('#errorText').hide();
+        }, 5000);
+        return;
+    }
     const storage = getStorage(app);
     const storageRef = stRef(storage, 'icon/' + icon.name);
 
@@ -325,9 +332,165 @@ $(document).on('click', '.remove-interast', function() {
 //#endregion 
 
 //#region App settings begains
+function appSettings() {
+    $('#settingsBody').empty();
+    $('#settingsBody').append(
+        `<div class="row">
+        <div class="col-md-6">
+            <div class="card" id="settingsttArea">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 id="cardHeaderTitleSettings">App Settings</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-end ">
+                            <a class="btn btn-success" data-bs-toggle="modal" id="addNew" data-bs-target="#modalCrate">Add</a> 
+                            </div>                                                
+                        </div>
+                    </div>                        
+                </div>
+                <div class="card-body" id="appSettingsBody">
+                    
+                </div>
+            </div>                              
+        </div>
+        <div class="col-md-6">
+            <div class="card" id="Analysis">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 id="cardHeaderTitleAnalysis">App Settings Analysis</h4>
+                        </div>
+                        <div class="col-md-6">                
+                        </div>
+                    </div>                        
+                </div>
+                <div class="card-body ">
+                    <div id="chartArea">
+                    </div>
+                </div>
+            </div>                              
+        </div>
+    </div>`
+    );
+    $('#frm').empty();
+    $('#frm').append(
+        `<div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="hidden" id="id" />
+                    <label for="minDistance">Min Distance</label>
+                    <input type="text" class="form-control" id="minDistance" name="naminDistanceme" placeholder="Enter min. Distance" required>
+                </div>
+                <div class="form-group">
+                    <label for="maxDistance">Maximum Distance</label>
+                    <input type="text" class="form-control" id="maxDistance" name="maxDistance" placeholder="Enter Max.Distance" required>
+                </div>
+                <p style="display: none; color: red; text-align:center; margin-top:5px;" id="errorText"> Both fils is required</p>
+            </div>                              
+        </div>`
+    );
+    $('#modalTitle').text('Create App Settings');
 
+    loadAppSettings();
+}
+function createAppSettings() {
+    let minDistance = $('#modalCrate #minDistance').val(); 
+    let maxDistance = $('#modalCrate #maxDistance').val();
+    if(minDistance == '' || maxDistance == '')
+    {
+        $('#errorText').show();
+        setInterval(() => {
+            $('#errorText').hide();
+        }, 5000);
+        return;
+    }
+    let modal = {
+        minimumDistance: minDistance,
+        maximumDistance: maxDistance,
+        createdDate: Date()
+    }
+    let newPostKey = push(child(dbRef(db), 'appSettings')).key;
+    let updates = {};
+    updates['/appSettings/' + newPostKey] = modal;
+    update(dbRef(db), updates)
+        .then(() => {
+            $('#modalCrate').modal('hide');
+            loadAppSettings();
+        })
+        .catch((e) => { 
+            console.log(e);
+        });
+}
+function loadAppSettings() {
+    $('#appSettingsBody').empty();
+    let content = ``;
+    onValue(dbRef(db, 'appSettings'), (snapshot) => {
+        snapshot.forEach((snapshot) => {
+            content += `<div class="row d-flex justify-content-around">                                            
+                            <div class="col-md-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row d-flex justify-content-center">
+                                            <div class="col-9">                                                                                                                                
+                                                <h6 class="my-1 font-12 fw-bold mt-3">Min Distance</h3>                                            
+                                            </div>
+                                            <div class="col-3 align-self-center">
+                                                <div class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                    <i class="font-12 align-self-center text-muted">${snapshot.val().minimumDistance} KM</i>                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row d-flex justify-content-center">
+                                            <div class="col-9">                                                                                                                                
+                                                <h6 class="my-1 font-12 fw-bold mt-3">Max Distance</h3>                                            
+                                            </div>
+                                            <div class="col-3 align-self-center">
+                                                <div class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                    <i class="font-12 align-self-center text-muted" >${snapshot.val().maximumDistance} KM</i>                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row d-flex justify-content-center">
+                                            <div class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                            <a href="javascript:void(0)" data-id="${snapshot.key}" class="remove-appSettings"><i class="align-self-center las la-trash text-danger font-24" ></i></a>                                                   
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <hr/>`
+        });
+            $('#appSettingsBody').append(content);
+        }, 
+        {
+            onlyOnce: true,
+        });
+}
+$(document).on('click', '.remove-appSettings', function() {
+    let key = $(this).data('id');
+    let intRef = dbRef(db, 'appSettings/' + key);
+    remove(intRef)
+    .then((e) => {
+        loadAppSettings();
+    });    
+});
 //#endregion
 
 $(document).ready(() => {
     //interastSettings()
+    //appSettings()
 })
