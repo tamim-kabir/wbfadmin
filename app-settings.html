@@ -257,7 +257,7 @@
                                         <div class="card-body clickAbleItem active">
                                             <div class="row d-flex justify-content-center">
                                                 <div class="col-9">                                                    
-                                                    <h3 class="my-1 font-20 fw-bold">Interast Settings</h3>                                                    
+                                                    <h3 class="my-1 font-20 fw-bold">Manage Interest</h3>                                                    
                                                 </div>
                                                 <div class="col-3 align-self-center">
                                                     <div class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
@@ -276,13 +276,13 @@
                                             <div class="row d-flex justify-content-center">
                                                 <div class="col-9">
                                                     <p class="text-dark mb-0 fw-semibold"></p>
-                                                    <h3 class="my-1 font-20 fw-bold">Profile Settings</h3>
+                                                    <h3 class="my-1 font-20 fw-bold">App Settings</h3>
                                                     
                                                 </div>
                                                 <div class="col-3 align-self-center">
                                                     <div
                                                         class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
-                                                        <i class="fas fa-user-cog font-24 align-self-center text-muted"></i>                                                    
+                                                        <i class="ti ti-settings font-24 align-self-center text-muted"></i>                                                    
                                                     </div>
                                                 </div>
                                             </div>
@@ -318,12 +318,12 @@
                                             <div class="row d-flex justify-content-center">
                                                 <div class="col-9">
                                                     <p class="text-dark mb-0 fw-semibold"></p>
-                                                    <h3 class="my-1 font-20 fw-bold">App Settings</h3>                                                
+                                                    <h3 class="my-1 font-20 fw-bold">Profile Settings</h3>                                            
                                                 </div>
                                                 <div class="col-3 align-self-center">
                                                     <div
                                                         class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
-                                                        <i class="ti ti-settings font-24 align-self-center text-muted"></i>                                                    
+                                                        <i class="fas fa-user-cog font-24 align-self-center text-muted"></i>                                                    
                                                     </div>
                                                 </div>
                                             </div>
@@ -335,59 +335,8 @@
                     </div>                    
                 </div>    
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h4 id="cardHeaderTitle">Interast Settings</h4>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="d-flex justify-content-end ">
-                                                   <a class="btn btn-success" data-bs-toggle="modal" id="addNew" data-bs-target="#modalCrate">Add</a> 
-                                                </div>                                                
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="card-body ">
-                                        <table class="table table-hover table-bordered" id="tblSettings">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sl</th>
-                                                    <th>Name</th>
-                                                    <th>Created Date</th>
-                                                    <th class="text-center">Icon</th>
-                                                    <th class="text-center">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
-                                    </div>
-                                </div>                              
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h4 id="cardHeaderTitle">Interast Analysis</h4>
-                                            </div>
-                                            <div class="col-md-6">
-
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="card-body ">
-                                        <div id="chartArea">
-                                        </div>
-                                    </div>
-                                </div>                              
-                            </div>
-                        </div>
+                    <div class="col-lg-12" id="settingsBody">
+                        
                     </div>
                 </div>            
             </div>
@@ -450,30 +399,7 @@
                 <div class="modal-body">
                     <div class="card-body">
                         <form id="frm">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="hidden" id="id" />
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">                                    
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12" id="dropy">
-                                    <div class="form-group">
-                                        <label for="photoUrl">Upload Icon</label>
-                                        <input asp-for="photoUrl" id="photoUrl" class="dropify" type="file" data-show-errors="true" data-errors-position="outside" data-allowed-file-extensions="jpg jpeg bmp png" placeholder=".jpg .jpeg .bmp .png" data-height="100"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6" id="dropyImg" style="display:none;">
-                                    <div class="form-group">
-                                        <img id="imgSrc" class="frmImg" style="height: 200px; margin: auto; top: 10%; position: absolute;" />
-                                    </div>
-                                </div>
-                            </div>                           
+                                                     
                         </form>
                     </div>
                 </div>

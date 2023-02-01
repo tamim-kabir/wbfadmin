@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged,  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
-import { getDatabase, ref as dbRef, set, child, get, onValue, push, update, query, orderByChild } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, ref as dbRef, set, child, get, onValue, push, update, remove,query, orderByChild } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import { getStorage, ref as stRef, uploadBytes, getDownloadURL  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 
 const firebaseConfig = {
@@ -122,7 +122,6 @@ if(window.location.pathname == '/wbfadmin/auth-register.html'){///wbfadmin
         
     });
     interastSettings();
-    $('.dropify').dropify();
 }
 //Settings
 var icon;
@@ -150,10 +149,8 @@ var icon;
     }
     
 })();
-function interastSettings() {
-    $('#modalTitle').text('Create interast');    
-    loadInterast(); 
-}
+
+
 $('#btnSave').click(() => {
     let modalTitle = $('#modalTitle').text();
     switch(modalTitle){
@@ -171,6 +168,87 @@ $('#btnSave').click(() => {
             break;
     }
 });
+//#region interst begain
+function interastSettings() {
+    $('#modalTitle').text('Create interast');  
+    $('#settingsBody').append(
+        `<div class="row">
+        <div class="col-md-6">
+            <div class="card" id="settingsttArea">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 id="cardHeaderTitleSettings">Interast Settings</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-end ">
+                               <a class="btn btn-success" data-bs-toggle="modal" id="addNew" data-bs-target="#modalCrate">Add</a> 
+                            </div>                                                
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-body ">
+                    <table class="table table-hover table-bordered" id="tblSettings">
+                        <thead>
+                            <tr>
+                                <th>Sl</th>
+                                <th>Name</th>
+                                <th>Created Date</th>
+                                <th class="text-center">Icon</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>                              
+        </div>
+        <div class="col-md-6">
+            <div class="card" id="Analysis">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 id="cardHeaderTitleAnalysis">Interast Analysis</h4>
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-body ">
+                    <div id="chartArea">
+                    </div>
+                </div>
+            </div>                              
+        </div>
+    </div>`
+    );
+    $('#frm').append(
+        `<div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="hidden" id="id" />
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+            </div>
+        </div>
+        <div class="col-md-12">                                    
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="dropy">
+            <div class="form-group">
+                <label for="photoUrl">Upload Icon</label>
+                <input asp-for="photoUrl" id="photoUrl" class="dropify" type="file" data-show-errors="true" data-errors-position="outside" data-allowed-file-extensions="jpg jpeg bmp png" placeholder=".jpg .jpeg .bmp .png" data-height="100"/>
+            </div>
+        </div>                                
+    </div> `
+    );
+    $('.dropify').dropify();
+    loadInterast();
+}
 function createInterst() {
     let name = $('#modalCrate #name').val(); 
     var icon = $("#photoUrl")[0].files[0];
@@ -224,8 +302,7 @@ function loadInterast() {
                                 <td>${format}</td>
                                 <td class="text-center"> <img src="${snapshot.val().iconUri}" alt="${snapshot.val().iconName}" width="20" height="20"></td>
                                 <td class="d-flex justify-content-center">
-                                    <a href="javascript:void(0)" data-id="${snapshot.key}" class="remove"><i class="las la-trash text-danger font-16"></i></a>
-                                    <a href="javascript:void(0)" data-id="${snapshot.key}" class="pl-2 edit"><i class="las la-pen text-secondary font-16"></i></a>                                                            
+                                    <a href="javascript:void(0)" data-id="${snapshot.key}" class="remove-interast"><i class="las la-trash text-danger font-16" title="Remove Item"></i></a>                                                           
                                 </td>
                             </tr>`
             });
@@ -237,6 +314,20 @@ function loadInterast() {
     
     return;
 }
+$(document).on('click', '.remove-interast', function() {
+    let key = $(this).data('id');
+    let intRef = dbRef(db, 'interst/' + key);
+    remove(intRef)
+    .then((e) => {
+        loadInterast();
+    });    
+});
+//#endregion 
+
+//#region App settings begains
+
+//#endregion
+
 $(document).ready(() => {
     //interastSettings()
 })
